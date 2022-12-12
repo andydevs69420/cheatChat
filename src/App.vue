@@ -1,22 +1,11 @@
 
 
 <template>
-  <div id="app">
-    <Page/>
-  </div>
+  <router-view></router-view>
 </template>
 
 
-<script>
-import Page from './components/Page.vue';
-
-export default {
-  components: { Page },
-  app: "app"
-}
+<script setup>
 </script>
-
-
-
 
 

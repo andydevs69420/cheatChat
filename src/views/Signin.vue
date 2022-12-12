@@ -1,4 +1,3 @@
-
 <style>
     :root {
         --navbar-height : 61.84px;
@@ -10,6 +9,14 @@
         padding-right: var(--body-padding);
         padding-bottom: var(--body-padding);
     }
+
+    @media screen and (min-width: 0px) and (max-width: 768px) {
+        #signin__center-panel {
+            box-shadow: none !important;
+            background-color: inherit;
+        }
+    }
+
 </style>
 
 <template>
@@ -24,7 +31,7 @@
                 <div class="col-12 col-md-4 col-xl-3 offset-md-4 offset-xl-4 my-5 justify-content-center text-center">
                     
                     <!-- center panel -->
-                    <div class="card border-0 shadow">
+                    <div id="signin__center-panel" class="card border-0 shadow">
     
                         <div class="card-body">
                             <div class="row">
@@ -33,14 +40,14 @@
                                     <div class="form-label text-start small">
                                         <strong>email</strong>
                                     </div>
-                                    <InputBar type="email" placeholder="email"/>
+                                    <InputBar id="email" icon-class="envelope" type="email" placeholder="email"/>
                                 </div>
                                 <div class="col-12 my-2">
-                                    <!-- email field -->
+                                    <!-- password field -->
                                     <div class="form-label text-start small">
                                         <strong>password</strong>
                                     </div>
-                                    <InputBar type="password" placeholder="password"/>
+                                    <InputBar id="password" icon-class="lock" type="password" placeholder="password"/>
                                 </div>
                                 <div class="col-12 my-2">
                                     <button class="btn btn-success shadow-sm w-100">
@@ -60,15 +67,17 @@
 </template>
 
 <script>
-import Navbar from "./Navbar.vue";
-import InputBar  from "./InputBar.vue";
+import Navbar from "../components/Navbar.vue";
+import InputBar from "../components/InputBar.vue";
 
 export default {
+    name: "Signin",
     components: {Navbar, InputBar},
-    data() {
-        return ({
-            greeting: "Hola!"
-        });
-    }
 }
 </script>
+
+
+
+
+
+

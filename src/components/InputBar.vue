@@ -2,8 +2,10 @@
 
 <template>
     <div class="input-group">
-        <span class="input-group-text">@</span>
-        <input class="form-control" v-model="value" :type="type" :placeholder="placeholder" @keypress="textChange"/>
+        <span class="input-group-text text-muted">
+            <fa :icon="iconClass"></fa>
+        </span>
+        <input :id="id" class="form-control" v-model="value" :type="type" :placeholder="placeholder" @change="textChange"/>
     </div>
 </template>
 
@@ -14,16 +16,24 @@ export default {
     name: "InputBar",
     data() {
         return {
-            value: ""
+            value: "",
         }
     },
     props: {
+        id: {
+            type:String,
+            required: true
+        },
         type: String,
-        placeholder: String
+        placeholder: String,
+        iconClass: {
+            type: String,
+            required: true
+        }
     },
     methods: {
-        textChange(e) {
-            console.log(e.target.value);
+        textChange () {
+            this.$emit(this.id + "__inputBarChanged", this.value);
         }
     }
 }
